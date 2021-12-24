@@ -10,11 +10,9 @@ async def on_ready():
     print("The bot is now ready for use!")
     print("-----------------------------")
 
-#@client.event
-#async def on_message(message):
-#
-#    if "ted" in message.content:
-#        await message.channel.send("I fucked Ted")
+@client.command(pass_context = True)
+async def ted(ctx):
+    await ctx.send("I fucked Ted")
 
 @client.command(pass_context = True)
 async def join(ctx):
