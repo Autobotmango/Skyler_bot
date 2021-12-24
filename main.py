@@ -25,15 +25,15 @@ async def on_ready():
 @client.event
 
 async def on_message(message):
-
-    if 'ted' in message.content:
-        await message.channel.send("I fucked Ted")
-    elif 'marie' in message.content:
-        await message.channel.send("Marie - Shut up!")
-    elif 'quicken' in message.content:
-        await message.channel.send("When I Put Everything Into Quicken, Nothing Flashed Red, So That's Gotta Mean It's Ok, Right?")
-    else:
-        await client.process_commands(message)
+    if message.author != client.user:
+        if 'ted' in message.content.lower():
+            await message.channel.send("I fucked Ted")
+        elif 'marie' in message.content.lower():
+            await message.channel.send("Marie - Shut up!")
+        elif 'quicken' in message.content.lower():
+            await message.channel.send("When I Put Everything Into Quicken, Nothing Flashed Red, So That's Gotta Mean It's Ok, Right?")
+        else:
+            await client.process_commands(message)
     
 
 
@@ -116,15 +116,15 @@ async def stop(ctx):
 
 async def play(ctx, arg):
 
-    if (arg == 'ted'):
+    if (arg.lower() == 'ted'):
 
         source = FFmpegPCMAudio("ted.mp3")
 
-    elif (arg == 'dad'):
+    elif (arg.lower() == 'dad'):
 
         source = FFmpegPCMAudio("dad.mp3")
 
-    elif (arg == 'hank'):
+    elif (arg.lower() == 'hank'):
 
         source = FFmpegPCMAudio("hank.mp3")
 
